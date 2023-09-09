@@ -1,1 +1,29 @@
-<paste log output from Kubernetes-mediated prediction, here>
+(.devops) tony@DESKTOP-JI2MQBC:~/dev/gitHub/DevOps_Microservices$ ./run_kubernetes.sh 
+pod/ml-microservice created
+NAME              READY   STATUS              RESTARTS   AGE
+ml-microservice   0/1     ContainerCreating   0          0s
+error: unable to forward port because pod is not running. Current status=Pending
+(.devops) tony@DESKTOP-JI2MQBC:~/dev/gitHub/DevOps_Microservices$ kubectl port-forward ml-microservice 8000:80
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+
+
+2023-09-09 16:49:10  * Serving Flask app "app" (lazy loading)
+2023-09-09 16:49:10  * Environment: production
+2023-09-09 16:49:10    WARNING: Do not use the development server in a production environment.
+2023-09-09 16:49:10    Use a production WSGI server instead.
+2023-09-09 16:49:10  * Debug mode: on
+2023-09-09 16:49:10  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+2023-09-09 16:49:10  * Restarting with stat
+2023-09-09 16:49:11  * Debugger is active!
+2023-09-09 16:49:11  * Debugger PIN: 289-644-691
+2023-09-09 16:51:47 [2023-09-09 15:51:47,930] INFO in app: JSON payload: 
+2023-09-09 16:51:47 {'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+2023-09-09 16:51:47 [2023-09-09 15:51:47,944] INFO in app: Inference payload DataFrame: 
+2023-09-09 16:51:47    CHAS     RM    TAX  PTRATIO      B  LSTAT
+2023-09-09 16:51:47 0     0  6.575  296.0     15.3  396.9   4.98
+2023-09-09 16:51:47 [2023-09-09 15:51:47,953] INFO in app: Scaling Payload: 
+2023-09-09 16:51:47    CHAS     RM    TAX  PTRATIO      B  LSTAT
+2023-09-09 16:51:47 0     0  6.575  296.0     15.3  396.9   4.98
+2023-09-09 16:51:47 [2023-09-09 15:51:47,957] INFO in app: Prediction from Model: [20.35373177134412]
+2023-09-09 16:51:47 127.0.0.1 - - [09/Sep/2023 15:51:47] "POST /predict HTTP/1.1" 200 -

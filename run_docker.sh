@@ -12,8 +12,5 @@ docker image ls
 
 # Step 3: 
 # Run flask app
-#docker run -p 8000:80 -it ml-microservice bash
 docker run -p 8000:80 ml-microservice 
 
-#run on port 8000?
-#docker run -p 8000:80 ml-microservice bash
