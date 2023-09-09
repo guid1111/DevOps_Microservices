@@ -4,7 +4,7 @@
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build --tag=ml-microservice .  
+docker build --tag=guid1111/ml-microservice .  
 
 # Step 2: 
 # List docker images
