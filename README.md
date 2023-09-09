@@ -4,8 +4,7 @@
 ## Project Summary
 
 House price prediction model.
-This application will listen on port 80 for requests
-JSON Requests can be sent using HTTP POST to the "/predict" endpoint.  The attributions of ths JSON payload should include a simple document with attributes such as number of rooms in a home, highway access etc.
+This application will listen on port 80 for requests. JSON Requests can be sent using HTTP POST to the "/predict" endpoint.  The attributions of ths JSON payload should include a simple document with attributes such as number of rooms in a home, highway access etc.
 The end point will output a single number containing the house price prediction.
 
 ## Instructions
