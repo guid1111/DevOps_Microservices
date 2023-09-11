@@ -1,24 +1,53 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/guid1111/DevOps_Microservices/tree/develop.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/guid1111/DevOps_Microservices/tree/develop)
 
+## Project Introduction
+
+This makes a sklearn model available through a Web API.  The model has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on the data source site. 
+
+## Project Motivation
+
+The motivation is to expose a ML model through a Web API hosted inside a docker container orchestrated by Kubernatest as a demonstration project.
 
 ## Project Summary
 
 House price prediction model.
-This application will listen on port 80 for requests. JSON Requests can be sent using HTTP POST to the "/predict" endpoint.  The attributions of ths JSON payload should include a simple document with attributes such as number of rooms in a home, highway access etc.
-The end point will output a single number containing the house price prediction.
+This application will listen on port 80 for requests. JSON Requests can be sent using HTTP POST to the "/predict" endpoint.  The attributions of ths JSON payload should include a simple document with attributes such as number of rooms in a home, highway access etc. The end point will output a single number containing the house price prediction.
 
-## Instructions
+## Tech stack
 
-The most repeatable way to build and run the application is to build a docker container for the application and run the container.
-This can be done by running the script: ./run_docker.sh
+The following tech stack is employed:
+- Python3 runtime.
+- Flask Web Framework
+- Docker (optional) - to run the application inside a container
+- Kubernates (optional) - to run the container using kubernates orchestration.
 
-If you wish to run the application locally, outside of the container you will require python3.7 (And if necessary use 3.7 for the virtual environment by using "virtualenv -p /usr/bin/python3.7 ~/.devops") and follow these steps:
+## Install dependencies (for applicaton local build and execution)
 
-- Create a python virtual environment by running: "make setup"
+The application dependencies set up to run locally by running the make with the target install: make install.
+To set up and configure Kubernates locally, the simplest way is to:
+- install docker desktop
+- once installed ensure the "Enable Kubernates" is checked in the settings for docker desktop.  This will enable a kubernates to run in a single node on the local system.
+
+## Run Instructions
+
+If you wish to run the application outside of the container please follow the following instructions.  Python version 3.7 is required, but if you have a later version, ensure 3.7 is installed in accessible location and follow the adapted instructions.
+
+- Create a python virtual environment by running: "make setup".  Or if you have a later version of python installed use "virtualenv" to create and activate the virtual environment (virtualenv -p /path/to/python/version ~/.devops)
 - After this run: "source ~/.devops/bin/activate" in a bash shell in order to start the virtual environment.
 - Then run "make install" to install the application's dependencies in to your virtual python environment.
-- And then you can run the application by running: "python3 app.py"
+- And then you can run the application by running: "python app.py"
 - To exit from the virtual environment run: "deactivate"
+
+# Build and Run Instructions (Docker)
+
+The most repeatable way to build and run the application is to build a docker container for the application and run the container.
+This can be done by running the script: ./run_docker.sh.  
+
+# Build and Run (Kubernates)
+
+- Build the docker container by running the script ./run_docker.sh.  Exit the application (ctrl + c)
+- To upload the container to docker hub  run "./upload_docker.sh"
+- To run the previously uploaded container using kubernates container orchestration run "./run_kubernates.sh" (This script will run the command "kubectl run ml-microservice --image=dockerImagePath")
 
 
 # Key Files

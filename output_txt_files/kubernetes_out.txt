@@ -42,3 +42,29 @@ Resultant log output:
 2023-09-10 16:25:04 0     0  6.575  296.0     15.3  396.9   4.98
 2023-09-10 16:25:04 [2023-09-10 15:25:04,377] INFO in app: Prediction from Model: [20.35373177134412]
 2023-09-10 16:25:04 127.0.0.1 - - [10/Sep/2023 15:25:04] "POST /predict HTTP/1.1" 200 -
+
+
+Or if you like using the command line tool:
+(I'm not sure what you are looking for here - the initial submission had the "Prediction from Model:" in it but is something more required?)
+
+(.devops) tony@DESKTOP-JI2MQBC:~/dev/gitHub/DevOps_Microservices$ kubectl logs ml-microservice
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 255-874-131
+[2023-09-10 15:25:04,226] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2023-09-10 15:25:04,334] INFO in app: Inference payload DataFrame:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2023-09-10 15:25:04,343] INFO in app: Scaling Payload:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2023-09-10 15:25:04,377] INFO in app: Prediction from Model: [20.35373177134412]
+127.0.0.1 - - [10/Sep/2023 15:25:04] "POST /predict HTTP/1.1" 200 -
+
